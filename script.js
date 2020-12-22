@@ -3,7 +3,7 @@ const right = document.querySelector('.right-side');
 const container = document.querySelector('.container');
 const tokyoName = document.querySelector('.tokyo-name');
 
-const rightSlide = document.querySelector('.split.right')
+const rightSlide = document.querySelector('.split.right');
 const downButton = document.querySelector('.next');
 
 const slidesLength = rightSlide.querySelectorAll('.image').length;
@@ -12,7 +12,14 @@ const height = container.clientHeight;
 
 let slideIndex = 0;
 
+const timeline = new TimelineMax();
+const tl = new TimelineMax();
 
+gsap.from('.bar',{duration: 1, x: 30, opacity: 0});
+timeline.fromTo('.eng-name', {x: 360, y: 180}, { y: 0, duration: 1})
+.fromTo('.eng-name',{y:0}, {y:0, x:0, duration: 1});
+gsap.from('.details', {duration:1, y: -50, opacity: 0});
+tl.fromTo(tokyoName, {x: 360, rotation: 0}, {duration: 1, rotation: -90}).fromTo(tokyoName, {x: 360}, {x: 145, duration: 1})
 downButton.addEventListener('click', ()=> changeSlide('up'));
 
 const changeSlide = (direction) => {

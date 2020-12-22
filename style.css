@@ -30,12 +30,12 @@ h1 {
     height: 100vh;
 }
 
-.extra-details {
+.details {
     display: flex;
     justify-content: flex-start;
 }
 
-.details {
+.info {
     margin-right: 50px;
     display: flex;
     flex-direction: column;
