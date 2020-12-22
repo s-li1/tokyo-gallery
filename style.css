@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --bg-color: white;
+    --hover-width: 95%;
+    --other-width: 5%;
+    --speed: 1000ms;
+    --font: 'Roboto', sans-serif;
+    --red-color: #E74C3C;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.extra-details {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.details {
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.split {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+.tokyo-name {
+    position: absolute;
+    top: 30%;
+    right: 50%;
+    transform: translate(50%, 50%) rotate(-90deg);
+    z-index: 1;
+    font-size: 6rem;
+    color: var(--red-color);
+}
+
+.fade-out {
+	opacity: 1;
+	animation-name: fadeOutOpacity;
+	animation-timing-function: ease-in;
+    animation-duration: 1s;
+}
+
+@keyframes fadeOutOpacity {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-timing-function: ease-in;
+    animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.split.left {
+    left:0;
+    padding: 10rem;
+    
+}
+.split.right {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: transform 0.5s ease-in-out;
+
+}
+
+.split.right > .image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.bar {
+    background-color: var(--red-color);
+    height: 100vh;
+    width: 10%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.split.right,
+.split.left,
+.split.right::before,
+.split.left::before {
+  transition: all var(--speed) ease-in-out;
+}
+
+
+.hover-right .right {
+    width: var(--hover-width);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .tokyo-name {
+        font-size: 3rem;
+        top: 40%;
+    }
+}
