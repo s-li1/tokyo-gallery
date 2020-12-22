@@ -7,6 +7,8 @@
     --speed: 1000ms;
     --font: 'Roboto', sans-serif;
     --red-color: #E74C3C;
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
 }
 
 * {
@@ -117,8 +119,16 @@ h1 {
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
 .split.right,
 .split.left,
 .split.right::before,
@@ -131,12 +141,83 @@ h1 {
     width: var(--hover-width);
 }
 
-button {
-    cursor: pointer;
-    border: none;
+.progress-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+    transform: rotate(90deg);
+}
+.progress-container::before {
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+
 }
 
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: -1;
+    transition: 0.4s ease;
+  }
+  
+.circle {
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4 ease;
+    transform: rotate(-90deg);
+    margin-left: 20px;
+}
 
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+.btn {
+    background-color: var(--line-border-fill);
+    color: var(--bg-color);
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
 @media (max-width: 800px) {
     h1 {
         font-size: 2rem;
